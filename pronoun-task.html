@@ -72,6 +72,7 @@
 
 
     <H3>SOURCE-LANGUAGE PRONOUN SETS AND TARGET-LANGUAGE PREDICTION CLASS DETAILS</H3>
+    <p>You should *always* predict either a word token or "OTHER". Some prediction classes describe groups of word forms, for example, the group of German pronominal adverbs encompasses a number of tokens including  "wofür", "davon", "dabei", "womit", etc. For this class, you should predict an actual word form, not the label "pronominal adverb". The same applies to German demonstrative pronouns, of which there are many tokens. Similarly for the classes listed as "this and that" and "ça and cela", you should predict the word form. For example either "this" or "that", "ça" or "cela".</p>
 
     <H4>English-to-French</H4>
     <p>This sub-task will concentrate on the translation of subject position "it" and "they" from English into French. The following prediction classes exist for this sub-task:</p>
@@ -93,15 +94,21 @@
       <tr><td><b>she</b></td><td>Feminine singular subject pronoun</td></tr>
       <tr><td><b>it</b></td><td>Non-gendered singular subject pronoun</td></tr>
       <tr><td><b>they</b></td><td>Non-gendered plural subject pronoun</td></tr>
+      <tr><td><b>this and that</b></td><td>Demonstrative pronouns</td></tr>
+      <tr><td><b>these and those</b></td><td>Demonstrative pronouns</td></tr>
+      <tr><td><b>there</b></td><td>Existential "there"</td></tr>
       <tr><td><b>OTHER</b></td><td>Some other word, or nothing at all, should be inserted</td></tr>
     </table> 
 
     <H4>English-to-German</H4>
-    <p>This sub-task will concentrate on the translation of subject position "it" from English into German. The following prediction classes exist for this sub-task:</p>
+    <p>This sub-task will concentrate on the translation of subject position "it" and "they" from English into German. The following prediction classes exist for this sub-task:</p>
     <table>
       <tr><td><b>er</b></td><td>Masculine singular subject pronoun</td></tr>
       <tr><td><b>sie</b></td><td>Feminine singular subject pronoun</td></tr>
       <tr><td><b>es</b></td><td>Neuter singular subject pronoun</td></tr>
+      <tr><td><b>man</b></td><td>Indefinite pronoun</td></tr>
+      <tr><td><b>demonstrative</b></td><td>Demonstrative pronoun (e.g. diese/dieser/dieses, jene/jener/jenes, etc.) <b>[predict word form]</b></td></tr>
+      <tr><td><b>pronominal adverb</b></td><td>Pronominal adverb (formed by combining a pronoun with a preposition, e.g. "wofür", "davon", etc.) <b>[predict word form]</b></td></tr>
       <tr><td><b>OTHER</b></td><td>Some other word, or nothing at all, should be inserted</td></tr>
     </table>
 
@@ -113,10 +120,17 @@
       <tr><td><b>it</b></td><td>Non-gendered singular subject pronoun</td></tr>
       <tr><td><b>they</b></td><td>Non-gendered plural subject pronoun</td></tr>
       <tr><td><b>you</b></td><td>Second person pronoun (with both generic or deictic uses)</td></tr>
-      <tr><td><b>this</b></td><td>Demonstrative pronoun</td></tr>
+      <tr><td><b>this and that</b></td><td>Demonstrative pronouns</td></tr>
+      <tr><td><b>these and those</b></td><td>Demonstrative pronouns</td></tr>
       <tr><td><b>there</b></td><td>Existential "there"</td></tr>
       <tr><td><b>OTHER</b></td><td>Some other word, or nothing at all, should be inserted</td></tr>
     </table> 
+
+
+    <H3>DISCUSSION GROUP</H3>
+    <p>If you are interested in participating in the shared task, we recommend that you sign up to our discussion group to make sure you don't miss any important information. Feel free to ask any questions you may have about the shared task!</p>
+
+    <p><a href="https://groups.google.com/forum/#!forum/wmt-2016-cross-lingual-pronoun-prediction-shared-task">https://groups.google.com/forum/#!forum/wmt-2016-cross-lingual-pronoun-prediction-shared-task</a></p>
 
 
     <H3>TRAINING DATA</H3>

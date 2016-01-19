@@ -28,13 +28,13 @@
     <ul>
         <li>To investigate and raise awareness of the problems that pronoun translation poses for SMT</li>
         <li>To highlight and examine the specific problems posed by the translation of different source-language pronouns into a given target-language</li>
-        <li>To provide a self-contained task, which will serve as a way to introduce newcomers to the field of <i>discouse in SMT</i></li>
+        <li>To provide a self-contained task, which will serve as a way to introduce newcomers to the field of <i>discourse in SMT</i></li>
     </ul>
     </p>
 
 
     <H3>TASK DESCRIPTION</H3>
-    <p>In the cross-lingual pronoun prediction task, you are given a source-language document with a <b>lemmatised and POS-tagged</b> human-authored translation and a set of word alignments between the two languages. In the translation, the lemmatised tokens aligned to the source-language third-person pronouns are substituted by placeholders. Your task is to predict, for each placeholder, the word token that should replace the placeholder from a small, closed set of classes, using any type of information that you can extract from the documents.</p>
+    <p>In the cross-lingual pronoun prediction task, you are given a source-language document with a <b>lemmatised and POS-tagged</b> human-authored translation and a set of word alignments between the two languages. In the translation, the lemmatised tokens aligned to the source-language third-person pronouns are substituted by placeholders. Your task is to predict, for each placeholder, <b>the fully inflected word token</b> that should replace the placeholder from a small, closed set of classes. I.e., to provide the fully inflected (German|French) translation of the English pronoun in the context sketched by the lemmatized/tagged target side (in the case of English-to-German|French translation). You may use any type of information that you can extract from the documents.</p>
 
     <p>The pronoun prediction task will be run for the following sub-tasks:
     <ul>
@@ -81,21 +81,42 @@
       <tr><td><b>elles</b></td><td>Feminine plural subject pronoun</td></tr>
       <tr><td><b>il</b></td><td>Masculine singular subject pronoun</td></tr>
       <tr><td><b>ils</b></td><td>Masculine plural subject pronoun</td></tr>
-      <tr><td><b>ça</b></td><td>Demonstrative pronoun (including the misspelling ca and the rare elided form ç')</td></tr>
-      <tr><td><b>cela</b></td><td>Demonstrative pronoun</td></tr>
+      <tr><td><b>ça and cela</b></td><td>Demonstrative pronouns (including the misspelling ca and the rare elided form ç')</td></tr>
       <tr><td><b>on</b></td><td>Indefinite pronoun</td></tr>
       <tr><td><b>OTHER</b></td><td>Some other word, or nothing at all, should be inserted</td></tr>
     </table> 
-    <p>Note that the English-to-French sub-task is unchanged from <a href="https://www.idiap.ch/workshop/DiscoMT/shared-task">DiscoMT 2015</a></p>
 
     <H4>French-to-English</H4>
-    <b>[To be announced]</b>
+    <p>This sub-task will concentrate on the translation of subject position "elle", "elles", "il", "ils" and "lui" from French into English. The following prediction classes exist for this sub-task:</p>
+    <table>
+      <tr><td><b>he</b></td><td>Masculine singular subject pronoun</td></tr>
+      <tr><td><b>she</b></td><td>Feminine singular subject pronoun</td></tr>
+      <tr><td><b>it</b></td><td>Non-gendered singular subject pronoun</td></tr>
+      <tr><td><b>they</b></td><td>Non-gendered plural subject pronoun</td></tr>
+      <tr><td><b>OTHER</b></td><td>Some other word, or nothing at all, should be inserted</td></tr>
+    </table> 
 
     <H4>English-to-German</H4>
-    <b>[To be announced]</b>
+    <p>This sub-task will concentrate on the translation of subject position "it" from English into German. The following prediction classes exist for this sub-task:</p>
+    <table>
+      <tr><td><b>er</b></td><td>Masculine singular subject pronoun</td></tr>
+      <tr><td><b>sie</b></td><td>Feminine singular subject pronoun</td></tr>
+      <tr><td><b>es</b></td><td>Neuter singular subject pronoun</td></tr>
+      <tr><td><b>OTHER</b></td><td>Some other word, or nothing at all, should be inserted</td></tr>
+    </table>
 
     <H4>German-to-English</H4>
-    <b>[To be announced]</b>
+    <<p>This sub-task will concentrate on the translation of subject position "er", "sie" and "es" from German into English. The following prediction classes exist for this sub-task:</p>
+    <table>
+      <tr><td><b>he</b></td><td>Masculine singular subject pronoun</td></tr>
+      <tr><td><b>she</b></td><td>Feminine singular subject pronoun</td></tr>
+      <tr><td><b>it</b></td><td>Non-gendered singular subject pronoun</td></tr>
+      <tr><td><b>they</b></td><td>Non-gendered plural subject pronoun</td></tr>
+      <tr><td><b>you</b></td><td>Second person pronoun (with both generic or deictic uses)</td></tr>
+      <tr><td><b>this</b></td><td>Demonstrative pronoun</td></tr>
+      <tr><td><b>there</b></td><td>Existential "there"</td></tr>
+      <tr><td><b>OTHER</b></td><td>Some other word, or nothing at all, should be inserted</td></tr>
+    </table> 
 
 
     <H3>TRAINING DATA</H3>
@@ -103,21 +124,22 @@
 
 
     <H3>TOOLS</H3>
-    <p>Participants are encouraged to use any type of information that can be extracted from the source and target-language text. Coreference resolution systems, dependency parsers, tools for detecting non-anaphoric instances of the pronoun "it", etc. may be useful. The committee recommends the following list of tools, though you are welcome to use any tools that you feel are appropriate.</p>
-
+    <p>Participants are encouraged to use any type of information that can be extracted from the source and target-language text. You may use any tool you like, but committee members have found the following ones useful:</p>
     <ul>
-        <li><a href="http://nlp.stanford.edu/software/dcoref.shtml">Stanford Coreference Resolution System</a> [English]</li>
-        <li><a href="http://nlp.stanford.edu/software/lex-parser.shtml">Stanford Dependency Parser</a> [English, German]</li>
-        <li><a href="http://nlp.stanford.edu/software/lex-parser.shtml">Stanford CoreNLP (combines various NLP modules)</a> [module support varies for English, French and German]</li>
-        <li><a href="https://github.com/rsennrich/parzu">Zurich Dependency Parser</a> [German]</li>
-        <li><a href="https://code.google.com/p/nada-nonref-pronoun-detector/">NADA (Non-anaphoric "it" detector)</a> [English]</li>
+        <li><a href="http://nlp.stanford.edu/software/lex-parser.shtml">Stanford CoreNLP</a> (combines various NLP modules, including English coreference resolution) <b>[English; some support for parsing French, German]</b></li>
+        <li><a href="https://code.google.com/p/mate-tools/wiki/ParserAndModels">MATE parser</a> (with joint tagging+parsing model) <b>[German]</b></li>
+        <li><a href="https://github.com/rsennrich/parzu">Zurich Dependency Parser</a> <b>[German]</b></li>
+        <li><a href="http://alpage.inria.fr/statgram/frdep/fr_stat_dep_parsing.html">The BONSAI suite of models</a> (uses an external lexicon to improve parsing) <b>[French]</b></li>
+        <li><a href="https://code.google.com/p/nada-nonref-pronoun-detector/">NADA</a> (Non-anaphoric "it" detector) <b>[English]</b></li>
         <li><b>[Other tools to be added?]</b></li>
     </ul>
 
-    <p>In addition to these tools, classification baselines are provided for each sub-task. See section below.</p>
+    <p>Adventurous people could also try using Sebastian Martschat's <a href="https://github.com/smartschat/cort">CORT</a>, which has an option to perform coreference resolution on unannotated text (using the Stanford tools for preprocessing). <b>[Disclaimer: the organisers have not used CORT themselves for that purpose]</b></p>
+
+    <p>In addition to the tools listed above, classification baselines are provided for each sub-task. See section below.</p>
 
 
-    <H3>CLASSIFICIATION BASELINE</H3>
+    <H3>CLASSIFICATION BASELINE</H3>
     <p>We provide baseline models for each sub-task. The baseline looks only at the language model scores (using KenLM, which you can download <a href="https://github.com/kpu/kenlm">here</a>, and the language model that is used needs to be in KenLM's binary format (which is the case for the "corpus.5.trie.kenlm" included in the "baseline-all" tarball).</p>
 
     <p>You can get predictions for the baseline model by running, e.g.:</p>
@@ -153,7 +175,9 @@
     <H3>EVALUATION</H3>
     <p>The predicted pronoun class labels will be <b>automatically</b> evaluated against the gold standard translations from the test set (see the example for the classification baseline below). The current version of the scorer is available here: <a href="http://opus.lingfil.uu.se/DiscoMT2015/discoMT_scorer.pl">discoMT_scorer.pl.</a></p>
 
-    <p>Source-language pronouns will be carefully selected for evaluation, for each sub-task. For example, in the case of English-to-French translation, which focusses on the translation of the English subject position pronouns "it" and "they", non-subject position instances of "it" will be excluded from the evaluation. Whether an instance of "it" is in subject or non-subject position will be determined automatically and checked manually. Another example is in the selection of instances of "it" for English-to-German translation. Following the identification of subject-position instances of "it", those found to be automatically aligned to the tokens "der", "die", "das", etc. used as definite articles (i.e. not pronouns) will be excluded from the set of source-language pronouns to be evaluated.</p>
+    <p>The task is to predict the translation of subject position pronouns only. As the test set contains other pronouns as well (e.g. non-subject position instances of "it", etc.), source-language pronouns will be carefully selected for evaluation, for each sub-task. For example, in the case of English-to-French translation, which focusses on the translation of the English subject position pronouns "it" and "they", non-subject position instances of "it" will be excluded from the evaluation. Whether an instance of "it" is in subject or non-subject position will be determined automatically and checked manually. Another example is in the selection of instances of "it" for English-to-German translation. Following the identification of subject-position instances of "it", those found to be automatically aligned to the tokens "der", "die", "das", etc. used as definite articles (i.e. not pronouns) will be excluded from the set of source-language pronouns to be evaluated.</p>
+
+    <p>Please note that the training set, like the test set, will contain both subject and non-subject position instances of the same pronoun tokens. You may wish to consider the effect that this has on the task and look into what methods, if any, you might use to accommodate this.</p>
 
     <p><b>[Further details to be announced]</b></p>
 
@@ -203,6 +227,13 @@
     Yannick Versley (University of Heidelberg)
     <br>
     Bonnie Webber (University of Edinburgh)
-    <br>   
+    <br>
+
+
+    <H3>ACKNOWLEDGEMENTS</H3>
+    <p>The organisation of this task has received support from the following project:</p>
+    <ul>
+        <li>Discourse-Oriented Statistical Machine Translation funded by the Swedish Research Council (2012-916)</li>
+    </ul>
   </body>
 </HTML>

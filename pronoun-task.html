@@ -36,6 +36,8 @@
     <H3>TASK DESCRIPTION</H3>
     <p>In the cross-lingual pronoun prediction task, you are given a source-language document with a <b>lemmatised and POS-tagged</b> human-authored translation and a set of word alignments between the two languages. In the translation, the lemmatised tokens aligned to the source-language third-person pronouns are substituted by placeholders. Your task is to predict, for each placeholder, <b>the fully inflected word token</b> that should replace the placeholder from a small, closed set of classes. I.e., to provide the fully inflected (German|French) translation of the English pronoun in the context sketched by the lemmatized/tagged target side (in the case of English-to-German|French translation). You may use any type of information that you can extract from the documents.</p>
 
+    <p><b>Lemmatised and POS-tagged</b> target-language data is provided in place of fully inflected text. This is intended both to provide a challenging task, and to simulate a scenario that is more closely aligned with working with machine translation system output.</p>
+
     <p>The pronoun prediction task will be run for the following sub-tasks:
     <ul>
         <li>English-to-German</li>
@@ -74,7 +76,7 @@
     <H3>SOURCE-LANGUAGE PRONOUN SETS AND TARGET-LANGUAGE PREDICTION CLASS DETAILS</H3>
     <p>The following sections describe the set of source-language pronouns and target-language classes to be predicted, for each of the four sub-tasks. Please note that the sub-tasks are asymmetric in terms of the source-language pronouns and prediction classes. The selection of the source-language pronouns and their target-language prediction classes for each sub-task is based on the variation that is possible when translating a given source-language pronoun. For example, when translating the English pronoun "it" into French, a decision must be made as to the gender of the French pronoun, with "il" and "elle" both providing valid options. The translation of the English pronouns "he" and "she" into French, however, does not require such a decision. These may simply be mapped 1-to-1, as "il" and "elle" respectively. The translation of "he" and "she" from English into French is therefore not considered an "interesting" problem and as such, these pronouns are excluded from the source-language set for the English->French sub-task. In the opposite translation, the French pronoun "il" may be translated as "it" or "he", and "elle" as "it" or "she". As a decision must be taken as to the appropriate target-language translation of "il" and "elle", these are included in the set of source-language pronouns for the French->English sub-task.</p>
 
-    <p>You should *always* predict either a word token or "OTHER". Some prediction classes describe more than one pronoun, i.e. "this and that" and "ça and cela". Here, you should predict the word form; either "this" or "that", "ça" or "cela".</p>
+    <p>You should *always* predict either a word token or "OTHER". See prediction class lists below for a list of word tokens to predict for each sub-task.</p>
 
     <H4>English-to-French</H4>
     <p>This sub-task will concentrate on the translation of subject position "it" and "they" from English into French. The following prediction classes exist for this sub-task:</p>
@@ -84,7 +86,8 @@
       <tr><td><b>elles</b></td><td>Feminine plural subject pronoun</td></tr>
       <tr><td><b>il</b></td><td>Masculine singular subject pronoun</td></tr>
       <tr><td><b>ils</b></td><td>Masculine plural subject pronoun</td></tr>
-      <tr><td><b>ça and cela</b></td><td>Demonstrative pronouns (including the misspelling ca and the rare elided form ç')</td></tr>
+      <tr><td><b>ça</b></td><td>Demonstrative pronoun (including the misspelling ca and the rare elided form ç')</td></tr>
+      <tr><td><b>cela</b></td><td>Demonstrative pronoun</td></tr>
       <tr><td><b>on</b></td><td>Indefinite pronoun</td></tr>
       <tr><td><b>OTHER</b></td><td>Some other word, or nothing at all, should be inserted</td></tr>
     </table> 
@@ -96,8 +99,10 @@
       <tr><td><b>she</b></td><td>Feminine singular subject pronoun</td></tr>
       <tr><td><b>it</b></td><td>Non-gendered singular subject pronoun</td></tr>
       <tr><td><b>they</b></td><td>Non-gendered plural subject pronoun</td></tr>
-      <tr><td><b>this and that</b></td><td>Demonstrative pronouns</td></tr>
-      <tr><td><b>these and those</b></td><td>Demonstrative pronouns</td></tr>
+      <tr><td><b>this</b></td><td>Demonstrative pronoun</td></tr>
+      <tr><td><b>that</b></td><td>Demonstrative pronoun</td></tr>
+      <tr><td><b>these</b></td><td>Demonstrative pronoun</td></tr>
+      <tr><td><b>those</b></td><td>Demonstrative pronoun</td></tr>
       <tr><td><b>there</b></td><td>Existential "there"</td></tr>
       <tr><td><b>OTHER</b></td><td>Some other word, or nothing at all, should be inserted</td></tr>
     </table> 
@@ -120,8 +125,10 @@
       <tr><td><b>it</b></td><td>Non-gendered singular subject pronoun</td></tr>
       <tr><td><b>they</b></td><td>Non-gendered plural subject pronoun</td></tr>
       <tr><td><b>you</b></td><td>Second person pronoun (with both generic or deictic uses)</td></tr>
-      <tr><td><b>this and that</b></td><td>Demonstrative pronouns</td></tr>
-      <tr><td><b>these and those</b></td><td>Demonstrative pronouns</td></tr>
+      <tr><td><b>this</b></td><td>Demonstrative pronoun</td></tr>
+      <tr><td><b>that</b></td><td>Demonstrative pronoun</td></tr>
+      <tr><td><b>these</b></td><td>Demonstrative pronoun</td></tr>
+      <tr><td><b>those</b></td><td>Demonstrative pronoun</td></tr>
       <tr><td><b>there</b></td><td>Existential "there"</td></tr>
       <tr><td><b>OTHER</b></td><td>Some other word, or nothing at all, should be inserted</td></tr>
     </table> 
@@ -154,7 +161,9 @@
 
 
     <H3>CLASSIFICATION BASELINE</H3>
-    <p>We provide baseline models for each sub-task. The baseline looks only at the language model scores (using KenLM, which you can download <a href="https://github.com/kpu/kenlm">here</a>, and the language model that is used needs to be in KenLM's binary format (which is the case for the "corpus.5.trie.kenlm" included in the "baseline-all" tarball).</p>
+    <b>[To be announced]</b>
+
+    <!--p>We provide baseline models for each sub-task. The baseline looks only at the language model scores (using KenLM, which you can download <a href="https://github.com/kpu/kenlm">here</a>, and the language model that is used needs to be in KenLM's binary format (which is the case for the "corpus.5.trie.kenlm" included in the "baseline-all" tarball).</p>
 
     <p>You can get predictions for the baseline model by running, e.g.:</p>
     
@@ -183,7 +192,7 @@
     <p>Results with "--null-penalty -2.0":<br>
     <b>[Results to be provided]</b><br>
     or a macro-averaged fine-grained F1 of <b>[Score to be provided]</b><br>
-    </p>
+    </p-->
 
 
     <H3>EVALUATION</H3>
